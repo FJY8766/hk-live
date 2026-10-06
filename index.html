@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hong Kong Live</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --card: #ffffff;
+      --text: #1a1a1a;
+      --muted: #5c6570;
+      --accent: #c8102e;
+      --border: #e2e6ea;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 4rem;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.4rem;
+    }
+
+    .author {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .overview {
+      margin: 1.25rem 0 0.35rem;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .intro {
+      margin: 0 0 2rem;
+      font-size: 1.1rem;
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      width: 100%;
+      min-height: 160px;
+      padding: 1.25rem 1.4rem;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    .card-weather {
+      background: linear-gradient(135deg, #e8f4fc 0%, #c5e4f7 100%);
+    }
+
+    .card-transport {
+      background: linear-gradient(135deg, #fff8e6 0%, #f5e4b0 100%);
+    }
+
+    .card-air {
+      background: linear-gradient(135deg, #f0f1f3 0%, #cfd3d8 100%);
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+    }
+
+    .card-weather .weather-content {
+      flex: 1;
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
+
+    .weather-station,
+    .weather-updated,
+    .weather-error {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .weather-temp {
+      margin: 0.2rem 0 0.45rem;
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .weather-error {
+      color: var(--text);
+    }
+
+    .card-air .air-content {
+      flex: 1;
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
+
+    .air-station,
+    .air-risk,
+    .air-error {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .air-aqhi {
+      margin: 0.2rem 0 0.45rem;
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .air-error {
+      color: var(--text);
+    }
+
+    .card-transport .transport-content {
+      flex: 1;
+      width: 100%;
+      margin-bottom: 0.75rem;
+    }
+
+    .transport-dest,
+    .transport-error {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .transport-minutes {
+      margin: 0.2rem 0 0.45rem;
+      font-size: 2.25rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+    }
+
+    .transport-error {
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Hong Kong Live</h1>
+    <p class="author">Jinyuan Fan · Electrical and Electronic Engineering (General Stream)</p>
+    <h2 class="overview">Overview</h2>
+    <p class="intro">This dashboard will show live weather, public transport, and air quality information for Hong Kong.</p>
+    <section class="cards" aria-label="Dashboard sections">
+      <article class="card card-weather">
+        <div id="weather-content" class="weather-content"></div>
+        <h2>Weather</h2>
+      </article>
+      <article class="card card-transport">
+        <div id="transport-content" class="transport-content"></div>
+        <h2>Transport</h2>
+      </article>
+      <article class="card card-air">
+        <div id="air-content" class="air-content"></div>
+        <h2>Air Quality</h2>
+      </article>
+    </section>
+  </main>
+
+  <footer>Data from the Hong Kong Government and DATA.GOV.HK.</footer>
+
+  <script type="module" src="app.js"></script>
+  
+</body>
+</html>
